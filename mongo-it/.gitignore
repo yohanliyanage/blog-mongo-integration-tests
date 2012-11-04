@@ -1,0 +1,8 @@
+.project
+.classpath
+.settings
+.gradle
+build/
+.DS_Store
+bin/
+.springBeans

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:mongo="http://www.springframework.org/schema/data/mongo"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/data/mongo http://www.springframework.org/schema/data/mongo/spring-mongo-1.0.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+
+	<!-- Enable Annotation Driven Configuration -->
+	<context:annotation-config />
+	
+	<!-- Component Scan Packages for Annotation Driven Configuration -->
+	<context:component-scan base-package="invis.core.data.repository,invis.core.service" />
+
+	<!-- Mongo DB -->
+	<mongo:mongo host="127.0.0.1" port="27017" />
+	
+	<!-- Mongo DB Factory -->
+	<mongo:db-factory dbname="mongoit" mongo-ref="mongo"/>
+	
+	<!-- Mongo Template -->
+	<bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
+		<constructor-arg name="mongoDbFactory" ref="mongoDbFactory" />
+	</bean>
+	
+</beans>
